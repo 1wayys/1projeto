@@ -42,10 +42,13 @@ body {
 
   /*background: color image repeat position/size */
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
+  /*VIEWPORT HEIGHT*/
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
 
@@ -91,6 +94,11 @@ ALINHAR ITENS IN LINE: ALIGN ITEMS E JUSTIFY CONTENT*/
 
   transform: translateY(-50%); /*50% acima do eixo do span na camada abaixo*/
   top: 50%; /*para voltar 50% e alinhar ao centro*/
+  animation: slide-back 0.2s forwards;
+}
+
+#switch button:hover {
+outline: 8px solid var(--highlight-color);
 }
 
 #switch span /*padrao display inline*/ {
@@ -104,8 +112,13 @@ ALINHAR ITENS IN LINE: ALIGN ITEMS E JUSTIFY CONTENT*/
 }
 
 .light #switch button {
-  right: 0;
-  left: initial; /*tem q colocar valor inicial*/
+/*animaçãooo*/
+animation: slide-in 0.4s forwards; /*MANTER NA MESMA PROPRIEDADE*/
+
+
+ /* 
+ right: 0;
+  left: initial; */ /*tem q colocar valor inicial*/
 }
 /* ELEMENTOS DISPLAY IN LINE NÃO SÃO ALINHADOS POR margin: auto;
 ELEMENTOS BLOCK PODEM.
@@ -213,4 +226,36 @@ footer {
 footer a:hover {
   background: var(--background-hover-wayys);
   border-radius: 5%;
+}
+
+/* media queries // AT RULE */
+
+@media (min-width: 700px) {
+  :root {
+--bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/*CRIAR ANIMAÇÕES*/
+
+@keyframes slide-in {
+from {
+  left:0;
+}
+to {
+  left:50%;
+}
+}
+
+@keyframes slide-back {
+from {
+  left:50%;
+}
+to {
+  left:0;
+}
 }
